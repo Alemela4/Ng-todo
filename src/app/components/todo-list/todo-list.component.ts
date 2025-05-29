@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Todo } from '../../models/todo';
-import { TODOS } from '../../data/todos';
+// import { TODOS } from '../../data/todos';
 import { TodoItemComponent } from "../todo-item/todo-item.component";
 import { TodoAddComponent } from "../todo-add/todo-add.component";
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -11,10 +12,17 @@ import { TodoAddComponent } from "../todo-add/todo-add.component";
   styleUrl: './todo-list.component.css'
 })
 export class TodoListComponent implements OnInit {
+
+  // alternativa 1 per richiedere il servizio
+  // constructor(private todoService: TodoService){}
+
+  // alternativa 2 per richiedere il servizio
+  todoService: TodoService = inject(TodoService);
+
   todos: Todo[] = []; // todos è un array di oggetti di tipo Todo
-   // OnInit è un interfaccia che rappresenta un metodo di inizializzazione dell'oggetto che viene chiamato quando l'oggetto viene inizializzato
-  ngOnInit(): void { // void è un tipo di dato che rappresenta un valore non definito
-    this.todos = TODOS; // TODOS è un array di oggetti di tipo Todo. Qui ci sarà la chiamata ajax (cioè la chiamata al servizio) per recuperare i dati dal database
+
+  ngOnInit(): void { // OnInit è un interfaccia che rappresenta un metodo di inizializzazione dell'oggetto che viene chiamato quando l'oggetto viene inizializzato. Void è un tipo di dato che rappresenta un valore non definito
+    this.todos = this.todoService.getTodos(); // qui ci sarà la chiamata ajax
   } 
 
   completa(id: number){ 
