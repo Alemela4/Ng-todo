@@ -1,8 +1,14 @@
 @if (todo) { <!-- questo è un'istruzione di condizione if che controlla se todo è nullo o meno -->
     <div class="d-flex justify-content-between"> <!-- mette il contenuto in una linea orizzontale -->
         <span [ngClass]= "{'text-decoration-line-through': todo.completed }"> {{ todo.text }} </span> <!-- visualizza il testo del todo, ma se è completato, lo contrassegna con una linea sotto -->
-        <button type="button" class="btn btn-success"> 
-            <i class="bi bi-check"></i> <!-- visualizza un'icona di check -->
+        <button type="button" 
+            class="btn"
+            [ngClass]="{`btn-success`: !todo.completed, `btn-secondary`: todo.completed}" 
+            (click)="richiediCompletamento()"> <!-- quando il pulsante viene cliccato, invia un messaggio al componente padre con l'id del todo -->
+            @if(todo.completed){
+                <i class="bi bi-x"></i> Ripristina <!-- visualizza un'icona di x -->
+            }@else{
+                <i class="bi bi-check"></i> Completa } <!-- visualizza un'icona di check -->
         </button>
     </div>
 }

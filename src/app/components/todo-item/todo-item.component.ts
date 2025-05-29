@@ -12,9 +12,9 @@ export class TodoItemComponent {
   @Input()
   todo?: Todo; // todo è un oggetto di tipo Todo e può essere nullo
 
-  onRichiestaCompletamento = output<number>(); // onRichiestaCompletamento è un output che può essere utilizzato per inviare un messaggio al componente padre. Questo messaggio viene inviato quando il pulsante di completamento viene cliccato
+  onRichiestaCompletamento = output<number>(); // creo il dispositivo che può generare eventi 
 
   richiediCompletamento(){
-    this.onRichiestaCompletamento.emit(this.todo!.id); // questo metodo invia un messaggio al componente padre con l'id del todo
+    this.onRichiestaCompletamento.emit(this.todo!.id); // genero l'evento: questo metodo invia un messaggio al componente padre con l'id del todo
   }
 }

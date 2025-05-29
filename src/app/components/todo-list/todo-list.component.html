@@ -1,5 +1,13 @@
 <div class="list-group"> <!-- list-group è un oggetto di classe che rappresenta un gruppo di elementi di tipo list-group-item e vengono visualizzati verticalmente -->
     @for (t of todos; track $index) { <!-- questo è un ciclo for che ci permette di iterare su tutti gli elementi di un array, in questo caso tutti gli oggetti di tipo Todo -->
-        <app-todo-item [todo]= "t" class="list-group-item"></app-todo-item> <!-- questo è un componente che visualizza un oggetto di tipo Todo, quindi l'oggetto di tipo Todo viene passato come input al componente TodoItem -->
+        <app-todo-item 
+            [todo]= "t" 
+            (onRichiestaCompletamento)="completa($event)" 
+            class="list-group-item">
+        </app-todo-item> <!-- questo è un componente che visualizza un oggetto di tipo Todo, quindi l'oggetto di tipo Todo viene passato come input al componente TodoItem -->
     }
 </div>
+<hr/>
+<app-todo-add 
+    (onRichiestaInserimento)="inserisciNuovoTodo($event)">
+</app-todo-add>
