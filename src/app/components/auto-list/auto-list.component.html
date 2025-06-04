@@ -1,3 +1,4 @@
-<pre>
-    {{ autos | json }} <!-- visualizzo l'array autos come stringa json -->
-</pre>
+<div class="d-flex gap-2">
+    <!-- @for (item of items; track $index) {} -->
+    <app-auto-item *ngFor="let a of autos" [auto]="a"></app-auto-item> <!-- utilizzo dell'attributo *ngFor per iterare attraverso gli elementi della lista -->
+</div>

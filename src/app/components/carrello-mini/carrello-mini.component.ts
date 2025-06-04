@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CarrelloService } from '../../services/carrello.service';
 
 @Component({
   selector: 'app-carrello-mini',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './carrello-mini.component.css'
 })
 export class CarrelloMiniComponent {
-
+  carrelloService: CarrelloService = inject(CarrelloService); // servizio per la gestione del carrello
 }

@@ -1,1 +1,11 @@
-<p>auto-item works!</p>
+<!-- @if (auto) {} -->
+<div *ngIf="auto" class="card"> <!-- utilizzo dell'attributo *ngIf per controllare se l'attributo auto è valorizzato -->
+    <div class="card-body">
+        <h3>{{ auto.marca }}</h3>
+        <h4>{{ auto.modello }}</h4>
+        <p>{{ auto.prezzo | currency }}</p>
+        <button type="button" class="btn btn-primary" (click)="aggiungiACarrello()">
+            <i class="bi bi-cart-fill"></i>
+        </button>
+    </div>
+</div>
